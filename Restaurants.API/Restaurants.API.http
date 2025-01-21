@@ -1,0 +1,39 @@
+@Restaurants.API_HostAddress = http://localhost:5086
+
+GET {{Restaurants.API_HostAddress}}/restaurants
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/restaurants/
+
+###
+POST {{Restaurants.API_HostAddress}}/restaurants
+Content-Type: application/json
+
+{
+  "Name": "Yam",
+  "Description": "HeavyFood",
+  "Category": "Locals",
+  "HasDelivery": true,
+  "ContactEmail" : "info@test.com",
+  "ContactNumber": "91140633525",
+  "City": "Ikeja",
+  "Street": "Adeniyi-Jones",
+  "PostalCode":"88-889"
+}
+
+###
+DELETE {{Restaurants.API_HostAddress}}/restaurants/55
+
+
+
+###
+PATCH {{Restaurants.API_HostAddress}}/restaurants/2
+Content-Type: application/json
+
+{
+  "Name": "Eba",
+  "Description": "Cassava",
+  "HasDelivery": true
+}

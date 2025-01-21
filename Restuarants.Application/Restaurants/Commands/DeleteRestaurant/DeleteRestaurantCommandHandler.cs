@@ -10,7 +10,7 @@ namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant
     {
         public async Task<bool> Handle(DeleteRestaurantCommand request, CancellationToken cancellationToken)
         {
-            logger.LogInformation($"Deleted restaurant with id {request.Id}");
+            logger.LogInformation("Deleted restaurant with id {@RestaurantId}",request.Id);
             var restaurant = await restaurantRepo.GetByIdAsync(request.Id);
             if (restaurant is null) return false;
             

@@ -5,14 +5,14 @@ GET {{Restaurants.API_HostAddress}}/restaurants
 ###
 
 
-GET {{Restaurants.API_HostAddress}}/restaurants/
+GET {{Restaurants.API_HostAddress}}/restaurants/2
 
 ###
 POST {{Restaurants.API_HostAddress}}/restaurants
 Content-Type: application/json
 
 {
-  "Name": "Yam",
+  "Name": "Yamporage",
   "Description": "HeavyFood",
   "Category": "Locals",
   "HasDelivery": true,
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{Restaurants.API_HostAddress}}/restaurants/55
+DELETE {{Restaurants.API_HostAddress}}/restaurants/5
 
 
 

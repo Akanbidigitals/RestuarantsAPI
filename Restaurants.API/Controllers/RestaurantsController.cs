@@ -11,46 +11,46 @@ using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 namespace Restaurants.API.Controllers
 {
     [ApiController]
-    [Route("restaurants")]
+    [Route("/api/restaurants")]
     public class RestaurantsController(IMediator mediator) : Controller
     {
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
         {
             var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
             return Ok(restaurants);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public async Task<ActionResult<RestaurantDto>> GetById([FromRoute] int id)
         {
             var res = await mediator.Send(new GetRestaurantByIdQuery(id));
-            if (res is null)
-            {
-                return NotFound("Restaurant not in the Db");
-            }
+         
             return Ok(res);
         }
 
         [HttpDelete("{id}")]
-
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeletebyId([FromRoute] int id)
         {
-            var isDeleted = await mediator.Send(new DeleteRestaurantCommand(id));
-            if (isDeleted) return NoContent();
+            await mediator.Send(new DeleteRestaurantCommand(id));
+           return NoContent();
 
-            return NotFound();
+            
         }
 
         [HttpPatch("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateRestaurant([FromRoute] int id, UpdateRestaurantCommand command)
         {
             command.Id = id;
-            var isUpdated = await mediator.Send(command);
-            if (isUpdated) return NoContent();
+            await mediator.Send(command);
 
-            return NotFound();
+
+            return NoContent();
         }       
 
         [HttpPost]

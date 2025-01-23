@@ -11,7 +11,8 @@ namespace Restaurants.Application.Dishes
         public decimal Price { get; set; }
         public int? KiloCalories { get; set; }
 
-        public static  DishDto FromEntity(Dish d)
+        //Using Dto
+        public static DishDto FromEntity(Dish d)
         {
             return new DishDto()
             {
@@ -22,6 +23,6 @@ namespace Restaurants.Application.Dishes
                 KiloCalories = d.KiloCalories,
             };
         }
-       
+
     }
 }

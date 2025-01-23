@@ -20,7 +20,7 @@ namespace Restaurants.Application.Restaurants.Dtos
         public List<DishDto> Dishes { get; set; } = [];
 
 
-        public static RestaurantDto? FromEntity(Restaurant? r )
+        public static RestaurantDto? FromEntity(Restaurant? r)
         {
             if (r == null) return null;
             return new RestaurantDto()
@@ -33,7 +33,7 @@ namespace Restaurants.Application.Restaurants.Dtos
                 City = r.Address?.City,
                 Street = r.Address?.Street,
                 PostalCode = r.Address?.PostalCode,
-                Dishes = r.Dishes.Select(DishDto.FromEntity).ToList()   
+                Dishes = r.Dishes.Select(DishDto.FromEntity).ToList()
             };
         }
     }

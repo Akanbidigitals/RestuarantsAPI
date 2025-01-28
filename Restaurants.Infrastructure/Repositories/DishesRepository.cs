@@ -16,6 +16,12 @@ namespace Restaurants.Infrastructure.Repositories
             return entity.Id;
         }
 
+        public async Task Delete(Dish entity)
+        {
+            _ctx.Dishes.Remove(entity);
+            await _ctx.SaveChangesAsync();  
+        }
+
         public async Task<IEnumerable<Dish>> GetAllAsync()
         {
             var dishes = await _ctx.Dishes.ToListAsync();

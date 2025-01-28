@@ -6,11 +6,11 @@ using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repository;
 
-namespace Restaurants.Application.Dishes.Commands
+namespace Restaurants.Application.Dishes.Commands.CreateDish
 {
-    public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger, IRestaurantRepository restaurantRepository, IMapper mapper , IDishesRepository dishRepo) : IRequestHandler<CreateDishCommand>
+    public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger, IRestaurantRepository restaurantRepository, IMapper mapper, IDishesRepository dishRepo) : IRequestHandler<CreateDishCommand, int>
     {
-        public async Task Handle(CreateDishCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateDishCommand request, CancellationToken cancellationToken)
         {
             logger.LogInformation("Creating new dish :{@DishRequest}", request);
             var restaurant = await restaurantRepository.GetByIdAsync(request.RestaurantId);
@@ -20,9 +20,9 @@ namespace Restaurants.Application.Dishes.Commands
             }
             var dish = mapper.Map<Dish>(request);
 
-            await dishRepo.Create(dish);
+           return await dishRepo.Create(dish);
         }
 
-     
+
     }
 }

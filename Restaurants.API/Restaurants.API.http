@@ -5,7 +5,7 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants/
 ###
 
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/2
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1
 
 ###
 POST {{Restaurants.API_HostAddress}}/api/restaurants
@@ -54,3 +54,26 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants/10/dishes
 
 ### //GetDishes by Id in Restaurant
 GET {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes/3
+
+### //DeleteDishes by Id in Restaurant
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes/3
+
+###
+//For User
+POST {{Restaurants.API_HostAddress}}/register
+Content-Type: application/json
+
+{
+  "email" : "test@mail",
+  "password" : "Testman1!"
+}
+
+###
+//For User
+POST {{Restaurants.API_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email" : "test@mail",
+  "password" : "Testman1!"
+}

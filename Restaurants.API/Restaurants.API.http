@@ -1,11 +1,11 @@
 @Restaurants.API_HostAddress = http://localhost:5086
-
-GET {{Restaurants.API_HostAddress}}/api/restaurants/
-
+@token = CfDJ8IaYC0Nl0NVMubk4AdBm_-njeMobzM5TKMYIMHjDtnAP6AT0QOGRjRZtiQel-LgLaZZ02mxCiDZb3-6oiGO1beJKdxLOLgIiFqLfphOHdcbYH1uKgS49n5W0G9pWMtR_E-xqvJYrgeakj7vWRF_4PSI6wGdteEv9xaTgImnTCP5OMjpJdHk8foF4xQXGQ3Llgdj3Un7ko3bV1Ui-atcl5JSBQtymDwRZCgvlJ9ONxozkiY1gfc2oudFh58cdZmHRwxY_J0qzqd-4P7CTiRAG7JyWsaIUpoeEKWnFiiIXVS7JEtxbclWeWWMMjxhj-If0UScOfiyL2kYZSFHlL5SvxqsFCki25oJ63LIuJkckFJgLhpwS9M8BMw3ni4bcYreCear4CjX15Jsd5p4EoRvsyw5rJ8Fdp_Fp5mC8nCQ1EC1zxLgKX1LESRzPu6P1Y596IlUydUvkqvjBZAcoRweRX0ni5vx5V16Yb0Dcezd-r3NNCoqXPvkTCb7vcj5WZgn2aoo_e3vkyR-q6cHzcV0TOU_6e78qu9FftwZwweFFJ71_w40fA-xn9dqRNq5OHQ6G544ispIQ_rHvuTNhF2D9QthNXPHaczoKngGREKvtvnIAS4he47J1-sOpZ2Iy2IJlT0bsl2tUL30oPpY9OYyi_kEHwlkaPRSiHykTgPgWdc6S6nN2XjHAa2nGzLCx0Fa9M0ThI9KLrm1esIt2vHlryRCRg3vPTSnFyJ9yYV5YMNDPp5TNV_cQSN83ryLUX7DE1g
 ###
 
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/1
+GET {{Restaurants.API_HostAddress}}/api/restaurants/
+Authorization: {{token}}
+
 
 ###
 POST {{Restaurants.API_HostAddress}}/api/restaurants
@@ -70,10 +70,19 @@ Content-Type: application/json
 
 ###
 //For User
-POST {{Restaurants.API_HostAddress}}/login
+POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
   "email" : "test@mail",
   "password" : "Testman1!"
+}
+
+###
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email" : "user@test.com",
+  "password" : "String11@"
 }

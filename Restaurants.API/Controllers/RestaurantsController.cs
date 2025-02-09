@@ -19,7 +19,7 @@ namespace Restaurants.API.Controllers
     {
 
         [HttpGet]
-        [Authorize(Policy = PolicyNames.HasNationality)]
+      //  [Authorize(Policy = PolicyNames.HasNationality)]
        // [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
         {

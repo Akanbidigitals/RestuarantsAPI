@@ -9,10 +9,6 @@ namespace Restaurants.API.Extensions
         public static void AddPresenstation(this WebApplicationBuilder builder)
         {
 
-
-
-
-
             /// Auths for bearer
             builder.Services.AddSwaggerGen(option =>
             {

@@ -34,11 +34,15 @@ namespace Restaurants.Infrastructure.Extensions
             services.AddScoped<IDishesRepository, DishesRepository>();
             //Add Authorization policy
             services.AddAuthorizationBuilder()
-                .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTtpes.Nationality, "Ausie"))
+                .AddPolicy(PolicyNames.HasNationality,
+                builder => builder.RequireClaim(AppClaimTtpes.Nationality, "Ausie"))
                 .AddPolicy(PolicyNames.AtLeast20,
-                builder => builder.AddRequirements(new MinimumAgeRequirement(50)));
+                builder => builder.AddRequirements(new MinimumAgeRequirement(50)))
+                .AddPolicy(PolicyNames.CreatedAtleast2Restaurants,
+                builder => builder.AddRequirements(new CreateMultipleRestaurantsRequirement(2)));
 
             services.AddScoped<IAuthorizationHandler,MinimumAgeRequirementHandler >();
+            services.AddScoped<IAuthorizationHandler,CreateMultipleRestaurantsRequirementHandler>();
             services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
         }
     }

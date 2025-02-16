@@ -14,12 +14,13 @@ namespace Restaurants.API.Controllers
 {
     [ApiController]
     [Route("/api/restaurants")]
-    //[Authorize]
+   // [Authorize]
     public class RestaurantsController(IMediator mediator) : Controller
     {
 
         [HttpGet]
-      //  [Authorize(Policy = PolicyNames.HasNationality)]
+
+        [Authorize(Policy = PolicyNames.CreatedAtleast2Restaurants)]
        // [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
         {
